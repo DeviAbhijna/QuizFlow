@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modification History</title>
+</head>
+<body>
+    <h1>Question Modification History</h1>
+    <a href="{% url 'show_questions' %}">← Back to Questions</a>
+    <hr>
+    {% for entry in history %}
+        <div>
+            <p><strong>{{ entry.timestamp|date:"Y-m-d H:i:s" }}</strong></p>
+            <p>Action: {{ entry.get_action_display }}</p>
+            <p>Question: {{ entry.question_text }}</p>
+            <p>Details: {{ entry.details }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>No history found.</p>
+    {% endfor %}
+</body>
+</html>
